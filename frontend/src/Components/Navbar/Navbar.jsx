@@ -6,10 +6,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ShopContext } from "../../Context/ShopContext";
+import { useRef } from "react";
+import nav_dropdown from "../Assets/nav_dropdown.png";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
-  const {getTotalCartItems} = useContext(ShopContext);
+  const { getTotalCartItems } = useContext(ShopContext);
+  const menuRef = useRef();
+  const dropdown_toggle = (e) => {
+    menuRef.current.classList.toggle("nav-menu-visible");
+    e.target.classList.toggle("open");
+  };
 
   return (
     <div className="navbar">
@@ -17,13 +24,22 @@ const Navbar = () => {
         <img src={logo} alt="" />
         <p>SHOPPER</p>
       </div>
-      <ul className="nav-menu">
+      <img
+        className="nav-dropdown"
+        src={nav_dropdown}
+        alt=""
+        onClick={dropdown_toggle}
+        // style={{ width: "12px", height: "12px" }}
+      />
+      <ul ref={menuRef} className="nav-menu">
         <li
           onClick={() => {
             setMenu("shop");
           }}
         >
-          <Link to="/" style={{ textDecoration: 'none', color: '#626262'}} >Shop</Link>
+          <Link to="/" style={{ textDecoration: "none", color: "#626262" }}>
+            Shop
+          </Link>
           {menu === "shop" ? <hr /> : <></>}
         </li>
         <li
@@ -31,21 +47,33 @@ const Navbar = () => {
             setMenu("mens");
           }}
         >
-          <Link to="/mens" style={{ textDecoration: 'none', color: '#626262'}}>Men</Link> {menu === "mens" ? <hr /> : <></>}
+          <Link to="/mens" style={{ textDecoration: "none", color: "#626262" }}>
+            Men
+          </Link>{" "}
+          {menu === "mens" ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
             setMenu("womens");
           }}
         >
-          <Link to="/womens" style={{ textDecoration: 'none', color: '#626262'}}>Women</Link> {menu === "womens" ? <hr /> : <></>}
+          <Link
+            to="/womens"
+            style={{ textDecoration: "none", color: "#626262" }}
+          >
+            Women
+          </Link>{" "}
+          {menu === "womens" ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
             setMenu("kids");
           }}
         >
-          <Link to="/kids" style={{ textDecoration: 'none', color: '#626262'}}>Kids</Link> {menu === "kids" ? <hr /> : <></>}
+          <Link to="/kids" style={{ textDecoration: "none", color: "#626262" }}>
+            Kids
+          </Link>{" "}
+          {menu === "kids" ? <hr /> : <></>}
         </li>
       </ul>
       <div className="nav-login-cart">
