@@ -20,7 +20,7 @@ const Navbar = () => {
             setMenu("shop");
           }}
         >
-          <Link to="/">Shop</Link>
+          <Link to="/" style={{ textDecoration: 'none', color: '#626262'}} >Shop</Link>
           {menu === "shop" ? <hr /> : <></>}
         </li>
         <li
@@ -28,21 +28,21 @@ const Navbar = () => {
             setMenu("mens");
           }}
         >
-          <Link to="/mens">Men</Link> {menu === "mens" ? <hr /> : <></>}
+          <Link to="/mens" style={{ textDecoration: 'none', color: '#626262'}}>Men</Link> {menu === "mens" ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
             setMenu("womens");
           }}
         >
-          <Link to="/womens">Women</Link> {menu === "womens" ? <hr /> : <></>}
+          <Link to="/womens" style={{ textDecoration: 'none', color: '#626262'}}>Women</Link> {menu === "womens" ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
             setMenu("kids");
           }}
         >
-          <Link to="/kids">Kids</Link> {menu === "kids" ? <hr /> : <></>}
+          <Link to="/kids" style={{ textDecoration: 'none', color: '#626262'}}>Kids</Link> {menu === "kids" ? <hr /> : <></>}
         </li>
       </ul>
       <div className="nav-login-cart">
