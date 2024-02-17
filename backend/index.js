@@ -109,6 +109,13 @@ app.post('/removeproduct',async(req,res) => {
     })
 })
 
+//Get all products endpoint
+app.get('/allproducts',async(req,res) => {
+    let products = await Product.find({})
+    console.log("All Products fetched");
+    res.send(products)
+})
+
 const upload = multer({storage:storage})
 
 //Creating Upload endpoint for images
